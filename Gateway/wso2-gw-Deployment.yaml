@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wso2am-gw
+  namespace: wso2am
+  labels:
+    app: wso2am-gw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wso2am-gw
+  template:
+    metadata:
+      labels:
+        app: wso2am-gw
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: APIMROLE
+                operator: In
+                values:
+                - apimegw
+      containers:
+      - name: wso2am-gw
+        image: wso2/wso2am:4.1.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PROFILE_NAME
+          value: "gateway-worker"
+        volumeMounts:
+         - mountPath: "/home/wso2carbon/wso2-config-volume"
+           name: wso2am-gw-storage
+      volumes:
+      - name: wso2am-gw-storage
+        persistentVolumeClaim:
+         claimName: wso2am-gw-pv-claim

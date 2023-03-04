@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wso2am-cp
+  namespace: wso2am
+spec:
+  selector:
+    app: wso2am-cp
+  ports:
+    - name: general-80
+      port: 80
+      targetPort: 80
+    - name: general-443
+      port: 443
+      targetPort: 443
+    - name: portal-http
+      port: 9763
+      targetPort: 9763
+    - name: portal-https
+      port: 9443
+      targetPort: 9443
+    - name: cp-http-apicall
+      port: 8280
+      targetPort: 8280
+    - name: cp-https-apicall
+      port: 8243
+      targetPort: 8243
+    - name:  cp-service-auth-data
+      port: 9711
+      targetPort: 9711
+    - name: cp-service-websocket
+      port: 9099
+      targetPort: 9099
+    - name: cp-service
+      port: 8099
+      targetPort: 8099
+    - name: throttling
+      port: 5672
+      targetPort: 5672
+    - name: traffic-manager-urls
+      port: 9611
+      targetPort: 9611

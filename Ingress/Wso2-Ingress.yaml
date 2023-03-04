@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: v-ingress-apim
+  namespace: wso2am
+  annotations:
+   kubernetes.io/ingress.class: nginx
+   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: tebgw.asax.ir
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: wso2am-gw
+            port:
+              number: 8243
+  - host: tebapim.asax.ir
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: wso2am-cp
+            port:
+              number: 443
