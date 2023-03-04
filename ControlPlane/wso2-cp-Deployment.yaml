@@ -6,7 +6,7 @@ metadata:
   labels:
     app: wso2am-cp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: wso2am-cp
@@ -14,14 +14,15 @@ spec:
     metadata:
       labels:
         app: wso2am-cp
+    spec:
       containers:
-        - name: wso2am-cp
-          image: wso2/wso2am:4.1.0
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-            - mountPath: "/home/wso2carbon/wso2-config-volume"
-              name: wso2am-cp-storage
+      - name: wso2am-cp
+        image: wso2am:4.1.0
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+         - mountPath: "/mnt"
+           name: wso2am-cp-storage
       volumes:
-        - name: wso2am-cp-storage
-          persistentVolumeClaim:
-            claimName: wso2am-cp-pv-claim
+      - name: wso2am-cp-storage
+        persistentVolumeClaim:
+         claimName: wso2am-cp-pvc
