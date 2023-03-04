@@ -25,4 +25,4 @@ spec:
       volumes:
       - name: wso2am-cp-storage
         persistentVolumeClaim:
-         claimName: wso2am-cp-pvc
+         claimName: wso2-cp-pvc
