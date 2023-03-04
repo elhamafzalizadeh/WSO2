@@ -15,15 +15,6 @@ spec:
       labels:
         app: wso2am-cp
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: APIMROLE
-                operator: In
-                values:
-                - apimcp
       containers:
       - name: wso2am-cp
         image: wso2/wso2am:4.1.0

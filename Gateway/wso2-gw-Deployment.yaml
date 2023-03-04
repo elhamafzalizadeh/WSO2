@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: wso2am-gw
+    spec:
       containers:
       - name: wso2am-gw
         image: wso2/wso2am:4.1.0
