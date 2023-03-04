@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wso2am-cp-pv-claim
+  name: wso2am-cp-pvc
   namespace: wso2am
 spec:
   storageClassName: apim-cp
