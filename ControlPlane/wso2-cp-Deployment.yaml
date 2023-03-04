@@ -15,13 +15,13 @@ spec:
       labels:
         app: wso2am-cp
       containers:
-      - name: wso2am-cp
-        image: wso2/wso2am:4.1.0
-        imagePullPolicy: IfNotPresent
-        volumeMounts:
-         - mountPath: "/home/wso2carbon/wso2-config-volume"
-           name: wso2am-cp-storage
+        - name: wso2am-cp
+          image: wso2/wso2am:4.1.0
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: "/home/wso2carbon/wso2-config-volume"
+              name: wso2am-cp-storage
       volumes:
-      - name: wso2am-cp-storage
-        persistentVolumeClaim:
-         claimName: wso2am-cp-pv-claim
+        - name: wso2am-cp-storage
+          persistentVolumeClaim:
+            claimName: wso2am-cp-pv-claim
